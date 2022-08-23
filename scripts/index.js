@@ -7,14 +7,14 @@ La letra "u" es convertida para "ufat"
 */
 /* let textoIngresado= document.getElementById("texto").value; */
 let contexto = document.getElementById("contenido-oculto");
-let textoResuelto = document.getElementById("section-texto");
+let textoResuelto = document.getElementById("texto-desencriptado");
 
 
 function encriptarTexto() {
  ocultarImagen();
  let ingresado = document.getElementById("texto").value;
  let resuelto = procesoEncriptacion(ingresado);
- document.getElementById("section-texto").innerHTML= resuelto;
+ document.getElementById("texto-desencriptado").innerHTML= resuelto;
  //console.log(textoIngresado);
  //document.write(textoIngresado.value);
 }
@@ -23,7 +23,7 @@ function desencriptarTexto() {
  ocultarImagen();
  let textoIngresado = document.getElementById("texto").value;
  let encriTexto = procesoDesencriptacion(textoIngresado);
- document.getElementById("section-texto").innerHTML = encriTexto;
+ document.getElementById("texto-desencriptado").innerHTML = encriTexto;
 }
 
 function ocultarImagen() {
@@ -91,4 +91,12 @@ function procesoDesencriptacion(e) {
   }
  }
  return newMesaje;
+}
+function copiarTexto(){
+ var aux = document.createElement("input");
+ aux.setAttribute("value", document.getElementById("texto-desencriptado").innerHTML);
+ document.body.appendChild(aux);
+ aux.select();
+ document.execCommand("copy");
+ document.body.removeChild(aux);
 }
